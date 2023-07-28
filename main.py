@@ -1,3 +1,5 @@
+from settings import *
+
 from kandinsky import *
 from time import *
 
