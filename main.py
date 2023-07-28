@@ -1,7 +1,8 @@
 from kandinsky import *
 from time import *
 
-class Game():
+
+class GameEngine():
     def __init__(self):
         #Variables for stabilizing fps
         self.targetFps = fps
@@ -16,3 +17,11 @@ class Game():
     
     def draw(self):
         pass
+    
+    def run(self):
+        while True:
+            self.update()
+            self.draw()
+
+
+game = GameEngine()
