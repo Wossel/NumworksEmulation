@@ -10,8 +10,19 @@ class GameEngine():
         self.breakDuration = 1/(fps*2)
         self.startTime = monotonic()
         #Starts the gameloop
+        self.running = True
         self.run()
 
+    def optimizeFps(self):
+        sleep(self.breakTime)
+        self.currentFps = 1/(monotonic()-self.startTime)
+        if self.currentFps > self.targetFps:
+            self.breakDuration += self.breakDuration/10
+        elif self.currentFps < self.targetFps:
+            self.breakDuration -= self.breakDuration/10
+        else:
+            pass
+    
     def update(self):
         pass
     
@@ -20,9 +31,17 @@ class GameEngine():
     
     def run(self):
         while True:
-            self.update()
-            self.draw()
+            while running:
+                self.startTime = monotonic()
+                self.update()
+                self.draw()
+                self.optimizeFps()
 
 
 game = GameEngine()
-"""test"""
+
+
+
+
+
+
